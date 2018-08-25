@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Clase 1 - Template</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="900" height="600"/>
+	</body>
+	<script>
+		var ctx = document.getElementById("canvas").getContext("2d");
+		// TODO:Pintar un rectángulo en pantalla, utilizando un gradiente que vaya de negro a amarillo en la primera
+    // mitad del ancho del rectángulo, y de amarillo a rojo, en la segunda mitad. Por otro lado, en Y el
+    //degrade se mantiene constante.
+    let width=400;
+		let height=200;
+		let imagen = ctx.createImageData(width,height);
+		for (var x = 0; x < width; x++) {
+      let rc = 0;
+
+      for (var y = 0; y < height; y++) {
+
+        if(x > (width/2)){
+          //de amarillo a rojo
+          rc=Math.floor( (Math.floor(x-(width/2)) / Math.floor(width/2))*255);
+
+          setPixel(imagen,x,y,255,255-rc,0,255);
+        }else {
+          //de negro a amarillo
+				  rc=Math.floor( (x / Math.floor(width/2))*255);
+
+          setPixel(imagen,x,y,255-(255-rc),255-(255-rc),0,255);
+        }
+			}
+      console.log(rc);
+		}
+    ctx.putImageData(imagen,20,50);
+		function setPixel(imagen, x,y,r,g,b,a) {
+			let index=(x + y * imagen.width) * 4;
+			imagen.data[index+0] = r;
+			imagen.data[index+1] = g;
+			imagen.data[index+2] = b;
+			imagen.data[index+3] = a;
+		}
+	</script>
+</html>

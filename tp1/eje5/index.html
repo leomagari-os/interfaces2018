@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Clase 1 - Template</title>
+	</head>
+	<body>
+		<div class="contInputs">
+			<div class="inputGroup">
+				<input type="text" id="url" value="" name="url" placeholder="Ingrese la url">
+				<button type="button" id="btnUrl"name="button">URL</button>
+			</div>
+			<div class="separador">
+					<span>O</span>
+			</div>
+			<div class="inputGroup">
+					<input type="file" id="imagenFile"name="imagenFile" >
+					<button type="button" id="btnUrl"name="button">Subir</button>
+			</div>
+
+		</div>
+		<div class="canvasImagen">
+			<canvas id="canvas" width="900" height="600"/>
+		</div>
+
+	</body>
+	<script>
+		var ctx = document.getElementById("canvas").getContext("2d");
+		// TODO: Cargar una Imagen desde disco o URL
+    // a. Dibujar la imagen dentro del canvas
+    // b. Implementar una función que aplique el filtro de escala de grises y muestre el resultado en el
+    //canvas.
+
+		document.getElementById("btnUrl").addEventListener("click",function (){
+			let image= new Image();
+			let src=document.getElementById('url').value;
+			console.log(src);
+			console.log('qweqweqwe');
+			image=new Image();
+			image.src= src;//"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+			image.onload=(function(){
+	      ctx.drawImage(this,10,10);
+
+	    });
+		} );
+		var imageData;
+		var image1= new Image();
+		image1.src="googlelogo.png";
+		image1.onload=function () {
+//					ctx.drawImage(this,Math.floor(this.width/2),Math.floor(this.height/2));
+					ctx.drawImage(this,Math.floor(this.width/2),0);
+					//ctx.drawImage(this,0,Math.floor(this.height/2));
+					imagedata=ctx.getImageData(0,0,this.width,this.height);
+					for (var x = 0; x < this.width; x++) {
+						for (var y = 0; y < this.height; y++) {
+							let colors=getColors(imagedata,x,y);
+							reemplazar(imagedata,x,y,colors);
+						}
+					}
+					ctx.putImageData(imagedata,0,0);
+		};
+
+		function getColors(imagen,x,y){
+			let index=(x + y * imagen.width) * 4;
+
+			r=imagen.data[index+0];
+			g=imagen.data[index+1] ;
+			b=imagen.data[index+2] ;
+			a=imagen.data[index+3] ;
+			let colors=[r,g,b,a];
+			return colors;
+		};
+		function reemplazar(imagen,x,y,colors) {
+			let promedio=0;
+			for (var i = 0; i < colors.length; i++) {
+				promedio+=colors[i]
+			}
+			promedio=promedio/colors.length;
+			let index=(x + y * imagen.width) * 4;
+
+			imagen.data[index+0]=promedio;
+			imagen.data[index+1]=promedio ;
+			imagen.data[index+2]=promedio ;
+
+		}
+		function setPixel(imagen, x,y,r,g,b,a) {
+			let index=(x + y * imagen.width) * 4;
+			imagen.data[index+0] = r;
+			imagen.data[index+1] = g;
+			imagen.data[index+2] = b;
+			imagen.data[index+3] = a;
+		}
+    //image.src= "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+  </script>
+</html>
