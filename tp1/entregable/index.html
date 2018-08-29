@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <link rel="stylesheet" href="css/styles.css">
+		<title>Clase 1 - Template</title>
+	</head>
+	<body>
+        <div class="paginaPaintOnline">
+                <div class="container">
+                        <div class="nav-options">barra para subir imagen, nuevo lienzo guardar imagen, filtros</div>
+                        <div class="barra-herramientas">colores lapiz goma </div>
+                        <div class="cont-lienzo">
+                                <canvas id="lienzo" width="900" height="600"/>
+                        </div>
+                </div>
+        </div>
+        
+	</body>
+	<script>
+		let canvas =document.getElementById("lienzo");
+                let lienzo = canvas.getContext("2d");		
+		// TODO: Utilizar el contexto 2D para dibujar
+        /*1.Barra de herramientas con, al menos, lápiz y goma de borrar, y su funcionalidad.
+        2.Permitir iniciar con un lienzo en blanco, o partir de una imagen que será cargada desde 
+        disco (Usar un diálogo para elegir la imagen)
+        3. Aplicar al menos cuatro filtros por pixeles a la imagen actual, por ejemplo: negativo, brillo, binarización y sepia.
+        4. Aplicar al menos dos de los siguientes filtros a la imagen: Saturación, Suavizado, Detección de Bordes, Blur.
+        5. Permitir guardar en disco la imagen, o descartar la imagen y comenzar con un lienzo vacío.*/
+
+        //Trackear mouse sobre canvas
+        //evento left click pressed y sobre canvas
+        //cambiar Image data en pixel trackeado por pixel color negro
+        function getMousePos(canvas,evt){
+                var bordes= lienzo.getBoundingClientRect();
+                return {
+                        x: evt.clientX - rect.left,
+                        y: evt.clientY - rect.top
+                };
+        }
+       
+
+        function writeMessage(canvas, message) {
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.font = '18pt Calibri';
+        context.fillStyle = 'black';
+        context.fillText(message, 10, 25);
+      }
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+//       var canvas = document.getElementById('myCanvas');
+//       var context = canvas.getContext('2d');
+
+      canvas.addEventListener('mousemove', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        var context = canvas.getContext('2d');
+        var pixel= context.getImageData(mousePos.x,mousePos.y,1,1);
+        var data = pixel.data;
+        data[0]=0;
+        data[1]=0;
+        data[2]=0;
+        data[3]=255;
+        context.putImageData(pixel,mousePos.x,mousePos.y);
+        //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        //writeMessage(canvas, message);
+      }, false);
+
+
+
+
+        
+	</script>
+</html>
