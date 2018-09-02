@@ -6,10 +6,28 @@
 		<title>Clase 1 - Template</title>
 	</head>
 	<body>
+        <div class="contInputs">
+                <div class="inputGroup">
+                        <input type="text" id="url" value="" name="url" placeholder="Ingrese la url">
+                        <button type="button" id="btnUrl"name="button">URL</button>
+                </div>
+                <div class="separador">
+                        <span>O</span>
+                </div>
+                <div class="inputGroup">
+                        <input type="file" id="imagenFile"name="imagenFile" >
+                        <button type="button" id="btnUrl"name="button">Subir</button>
+                </div>
+
+        </div>
         <div class="paginaPaintOnline">
                 <div class="container">
-                        <div class="nav-options">barra para subir imagen, nuevo lienzo guardar imagen, filtros</div>
-                        <div class="barra-herramientas">colores lapiz goma </div>
+                        <div class="nav-options"><button id="nuevo">Nuevo</button> para subir imagen, nuevo lienzo guardar imagen, filtros</div>
+                        <div class="barra-herramientas">
+                                <button id="btnPencil">lapiz</button> 
+                                <button id="btnRubber">goma</button>
+                                 colores
+                         </div>
                         <div class="cont-lienzo">
                                 <canvas id="lienzo" width="900" height="600"/>
                         </div>
@@ -19,7 +37,74 @@
 	</body>
 	<script>
 		let canvas =document.getElementById("lienzo");
-                let lienzo = canvas.getContext("2d");		
+                let lienzo = canvas.getContext("2d");	
+                //------------------------------------------para subir imagen
+                let ctx= canvas.getContext("2d");
+                document.getElementById("btnUrl").addEventListener("click",function (){
+			let image= new Image();
+			let src=document.getElementById('url').value;
+			console.log(src);
+			console.log('qweqweqwe');
+			image=new Image();
+                        //image.crossOrigin="anonymous";
+			image.src= src;//"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+			image.onload=(function(){
+	                        ctx.drawImage(this,10,10);
+                                let imageData= ctx.getImageData(0,0,canvas.width,canvas.height);
+                                ctx.putImageData(0,0,imageData.width,imageData.height);
+                                this.src='';
+                                //para evitar cors tengo q crear un imagedata a partir de la imagen
+                        });
+		} );
+		/* var imageData;
+		var image1= new Image();
+		image1.src="googlelogo.png";
+		image1.onload=function () {
+//					ctx.drawImage(this,Math.floor(this.width/2),Math.floor(this.height/2));
+					ctx.drawImage(this,Math.floor(this.width/2),0);
+					//ctx.drawImage(this,0,Math.floor(this.height/2));
+					imagedata=ctx.getImageData(0,0,this.width,this.height);
+					for (var x = 0; x < this.width; x++) {
+						for (var y = 0; y < this.height; y++) {
+							let colors=getColors(imagedata,x,y);
+							reemplazar(imagedata,x,y,colors);
+						}
+					}
+					ctx.putImageData(imagedata,0,0);
+		};
+
+		function getColors(imagen,x,y){
+			let index=(x + y * imagen.width) * 4;
+
+			r=imagen.data[index+0];
+			g=imagen.data[index+1] ;
+			b=imagen.data[index+2] ;
+			a=imagen.data[index+3] ;
+			let colors=[r,g,b,a];
+			return colors;
+		};
+		function reemplazar(imagen,x,y,colors) {
+			let promedio=0;
+			for (var i = 0; i < colors.length; i++) {
+				promedio+=colors[i]
+			}
+			promedio=promedio/colors.length;
+			let index=(x + y * imagen.width) * 4;
+
+			imagen.data[index+0]=promedio;
+			imagen.data[index+1]=promedio ;
+			imagen.data[index+2]=promedio ;
+
+		}
+		function setPixel(imagen, x,y,r,g,b,a) {
+			let index=(x + y * imagen.width) * 4;
+			imagen.data[index+0] = r;
+			imagen.data[index+1] = g;
+			imagen.data[index+2] = b;
+			imagen.data[index+3] = a;
+		}
+ */
+
 		// TODO: Utilizar el contexto 2D para dibujar
         /*1.Barra de herramientas con, al menos, lápiz y goma de borrar, y su funcionalidad.
         2.Permitir iniciar con un lienzo en blanco, o partir de una imagen que será cargada desde 
@@ -47,6 +132,7 @@
         context.fillStyle = 'black';
         context.fillText(message, 10, 25);
       }
+      let stack=[];
       function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
         return {
@@ -56,23 +142,76 @@
       }
 //       var canvas = document.getElementById('myCanvas');
 //       var context = canvas.getContext('2d');
+var isClickPressed= false;
+var pencilWidth= 2;
+var oldPos=null;
+        canvas.onmousedown=()=>{
+                console.log(true);
+                isClickPressed=true;
+                };
+        document.onmouseup=()=>{
+                console.log(false);
+                isClickPressed=false;
+                oldPos=null;
+        }
+        canvas.onmouseout=()=>{
+                oldPos=null;
+        }
+        let isPencil=null;
+        canvas.addEventListener('mousemove', function(evt) {
+                if(isClickPressed){
+                        var mousePos = getMousePos(canvas, evt);
+                        oldPos= oldPos==null? mousePos: oldPos;
+                        var context = canvas.getContext('2d');
+                        //console.log(oldPos.x +', '+oldPos.y);
+                        var pixel= context.getImageData(oldPos.x,oldPos.y,1,1);
+                        if(isPencil!==null && isPencil==true){
+                                context.beginPath();
+                                context.moveTo(oldPos.x,oldPos.y);
+                                context.lineTo(mousePos.x,mousePos.y);
+                                context.lineCap="round";
+                                context.lineWidth=2;
+                                context.stroke();
+                        } else if(isPencil!==null && isPencil==false){
+                                context.beginPath();
+                                context.moveTo(oldPos.x,oldPos.y);
+                                context.lineTo(mousePos.x,mousePos.y);
+                                context.strokeStyle="white"
+                                context.lineCap="round";
+                                context.lineWidth=25;
+                                context.stroke();
+                        }
+                        
+                        oldPos=mousePos;
 
-      canvas.addEventListener('mousemove', function(evt) {
-        var mousePos = getMousePos(canvas, evt);
-        var context = canvas.getContext('2d');
-        var pixel= context.getImageData(mousePos.x,mousePos.y,1,1);
-        var data = pixel.data;
+                }
+        /* var data = pixel.data;
         data[0]=0;
         data[1]=0;
         data[2]=0;
         data[3]=255;
-        context.putImageData(pixel,mousePos.x,mousePos.y);
+        context.putImageData(pixel,mousePos.x,mousePos.y); */
         //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
         //writeMessage(canvas, message);
       }, false);
 
-
-
+      //limpiarLienzo
+      var lienzoBGColor="white"
+      function limpiarLienzo(){
+        console.log("limpiando lienzo con color "+ lienzoBGColor);
+        let ctx=canvas.getContext("2d");
+        ctx.fillStyle=lienzoBGColor;
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+      }
+      document.getElementById("nuevo").addEventListener('click',limpiarLienzo,false);
+      function setPencil(){
+        isPencil=true;
+      }
+      document.getElementById("btnPencil").addEventListener('click',setPencil,false);
+      function setRubber(){
+        isPencil=false;
+      }
+      document.getElementById("btnRubber").addEventListener('click',setRubber,false);
 
         
 	</script>
