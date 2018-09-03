@@ -1,3 +1,46 @@
+colorPickerImg= new Image();
+colorPickerImg.src="images/color-picker.png";
+colorPickerImg.onload=()=>{
+        console.log("colorPicker cargado");
+        let ctx= colorPicker.getContext("2d");
+        ctx.drawImage(colorPickerImg,0,0);
+};
+let colorPicker= document.getElementById("color-picker");
+let colorPicked=null;
+let isClickPressedCP=false;
+colorPicker.onmousedown=(evt)=>{
+        isClickPressedCP=true;
+};
+colorPicker.onmousemove= (evt)=>{
+        if(isClickPressedCP){
+                let mousePos = getMousePos(colorPicker, evt);
+        let x=mousePos.x;
+        let y=mousePos.y;
+        let context = colorPicker.getContext('2d');
+        
+        context.drawImage(colorPickerImg,0,0);
+                        
+                        //console.log(oldPos.x +', '+oldPos.y);
+                        var data= context.getImageData(x,y,1,1).data;
+                        
+            let red = data[0];
+            let green = data[ 1];
+            let blue = data[2];
+            let color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+            console.log(color);
+                colorPicked=color;
+                
+      context.beginPath();
+      context.arc(x, y, 5, 0, 2 * Math.PI, false);
+      context.fillStyle = 'white';
+      context.fill();
+      context.lineWidth = 2;
+      context.strokeStyle = '#003300';
+      context.stroke();
+        }
+        
+}
+
 let canvas =document.getElementById("lienzo");
                 let canvasurl =document.getElementById("lienzourl");
                 let lienzo = canvas.getContext("2d");	
@@ -123,7 +166,7 @@ let canvas =document.getElementById("lienzo");
         //evento left click pressed y sobre canvas
         //cambiar Image data en pixel trackeado por pixel color negro
         function getMousePos(canvas,evt){
-                var bordes= lienzo.getBoundingClientRect();
+                var rect= canvas.getBoundingClientRect();
                 return {
                         x: evt.clientX - rect.left,
                         y: evt.clientY - rect.top
@@ -158,14 +201,17 @@ var oldPos=null;
         document.onmouseup=()=>{
                 console.log(false);
                 isClickPressed=false;
+                isClickPressedCP=false;
                 oldPos=null;
         }
         canvas.onmouseout=()=>{
                 oldPos=null;
         }
         canvas.onmouseover=(evt)=>{
+                if(isClickPressed){
                 let mousePos=getMousePos(canvas,evt);
                 oldPos=mousePos;
+                }
         }
         let isPencil=null;
         canvas.addEventListener('mousemove', function(evt) {
@@ -180,13 +226,14 @@ var oldPos=null;
                                 context.moveTo(oldPos.x,oldPos.y);
                                 context.lineTo(mousePos.x,mousePos.y);
                                 context.lineCap="round";
+                                context.strokeStyle=colorPicked;
                                 context.lineWidth=2;
                                 context.stroke();
                         } else if(isPencil!==null && isPencil==false){
                                 context.beginPath();
                                 context.moveTo(oldPos.x,oldPos.y);
                                 context.lineTo(mousePos.x,mousePos.y);
-                                context.strokeStyle="white"
+                                context.strokeStyle="white";
                                 context.lineCap="round";
                                 context.lineWidth=25;
                                 context.stroke();
