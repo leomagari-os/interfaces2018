@@ -1,0 +1,34 @@
+body{
+    background:darkgray;
+}
+.container{
+    display: inline-flex;
+    background:darkgray;
+}
+.lienzo{
+    background:white;
+}
+.barra-herramientas{
+    display: block;
+}
+.herramientas{
+    position: relative;
+height: 50px;
+top: 0;
+}
+.color-pick{
+    position: relative;
+}
+#color-actual{
+    background: #000000;
+    border: 1px solid white;
+    height: 15px;
+    border-radius: 5px;
+}
+ul{
+    display: inline;
+    list-style: none;
+}
+li{
+    display: inline-block;
+}

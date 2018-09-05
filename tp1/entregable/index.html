@@ -3,40 +3,65 @@
 	<head>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <link rel="stylesheet" href="css/styles.css">
-		<title>Clase 1 - Template</title>
+		<title>Dibuja Online!</title>
 	</head>
 	<body>
-        <div class="contInputs">
-                <div class="inputGroup">
-                        <input type="text" id="url" value="" name="url" placeholder="Ingrese la url">
-                        <input type="file" id="fileIn" hidden>
-                        <button type="button" id="btnUrl"name="button">URL</button>
-                </div>
-                <div class="separador">
-                        <span>O</span>
-                </div>
+        <div class="nav">
+                <ul>
+                        <li>Archivo</li>
+                        <li>Filtros simples</li>
+                        <li>Filtros avanzados</li>
+                        
+                </ul>
+        </div>
+        <div class="contInputs" hidden>
+                
                 <div class="inputGroup">
                         <input type="file" id="imagenFile"name="imagenFile" >
                         <button type="button" id="btnUrl"name="button">Subir</button>
                 </div>
 
         </div>
+        <div class="contFilters" hidden>
+                <div class="basics">
+                        <button id="btnNegativo">Negativo</button>
+                        <button id="btnBrillo">Brillo</button>
+                        <button id="btnBinarizacion">Binarizcion</button>
+                        <button id="btnByN">Blanco y Negro</button>
+                        <button id="btnSepia">Sepia</button>
+                </div>
+                <div class="advanceds">
+                        <button id="btnSaturacion">Saturacion</button>
+                        <button id="btnSuavizado">Suavizado</button>
+                        <button id="btnDeteccion">Deteccion de bordes</button>
+                        <button id="btnBlur">Blur</button>
+                </div>
+                <div class="nav-options" hidden><button id="nuevo">Nuevo</button> para subir imagen, nuevo lienzo guardar imagen, filtros</div>
+                        
+        </div>
         <div class="paginaPaintOnline">
                 <div class="container">
-                        <div class="nav-options"><button id="nuevo">Nuevo</button> para subir imagen, nuevo lienzo guardar imagen, filtros</div>
                         <div class="barra-herramientas">
-                                <button id="btnPencil">lapiz</button> 
-                                <button id="btnRubber">goma</button>
-                                <canvas id="color-picker" width="128" height="128"></canvas>
+                                <div class="herramientas">
+                                        <button id="btnPencil">lapiz</button> 
+                                        <button id="btnRubber">goma</button>                        
+                                </div>
+                                <div class="color-pick">
+                                        <div>Color picker</div>
+                                        <canvas id="color-picker" width="128" height="128"></canvas>
+                                        <div>Color actual</div>
+                                        <div id="color-actual"></div>
+                                </div>
                                 
                          </div>
                         <div class="cont-lienzo">
-                                <canvas id="lienzo" width="900" height="600"/>
-                                <canvas id="lienzourl" width="900" height="600"/>
+                                <canvas class="lienzo" id="lienzo" width="900" height="600"/>
+                               
                         </div>
                 </div>
         </div>
 	</body>
 	<script src="js/paint.js" >
-	</script>
+        </script>
+        <script src="js/filtros.js"></script>
 </html>
