@@ -3,26 +3,61 @@
 	<head>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <link rel="stylesheet" href="css/styles.css">
+                <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet"> 
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<title>Dibuja Online!</title>
 	</head>
 	<body>
         <div class="nav">
+                <div class="logo">
+                        <span class="textLogo"> Dibuja Online!</span>
+                </div>
                 <ul>
-                        <li>Archivo</li>
-                        <li>Filtros simples</li>
-                        <li>Filtros avanzados</li>
+                        <li>
+                                <div class="separador">Archivo</div>
+                                
+                        </li>
+                        <li>
+                                <div class="separador">Filtros basicos  </div>
+                        </li>
+                        <li>
+                                <div class="separador">Filtros avanzados</div>
+                                
+                        </li>
                         
                 </ul>
         </div>
-        <div class="contInputs" hidden>
+        <div id="navFilters"class=" font-nav">
+                        <ul id="contBasicFilters" >
+                                    
+                                <li id="btnNegativo">Negativo</li>
+                                <li id="btnBrillo">Brillo</li>
+                                <li id="btnBinarizacion">Binarizacion</li>
+                                <li id="btnByN">Blanco y Negro</li>
+                                <li id="btnSepia">Sepia</li>      
+                        </ul>
+                        <ul id="contAdvancedFilters" >
+                                <li id="btnSaturacion">Saturacion</li>
+                                <li id="btnSuavizado">Suavizado</li>
+                                <li id="btnDeteccion">Deteccion de bordes</li>
+                                <li id="btnBlur">Blur</li>
+                        </ul>
+                        <ul id="contArchivo" >
+                                        <li id="nuevo">Archivo Nuevo</li>
+                                        <li id="btnSubirImagen">Subir Imagen</li>
+                                        <li id="btnGuardar">Guardar Imagen</li>
+                        </ul>
+
+        </div>
+        <!-- <div class="contInputs" hidden>
                 
                 <div class="inputGroup">
                         <input type="file" id="imagenFile"name="imagenFile" >
                         <button type="button" id="btnUrl"name="button">Subir</button>
                 </div>
 
-        </div>
-        <div class="contFilters" hidden>
+        </div> -->
+        <!--<div class="contFilters" hidden>
                 <div class="basics">
                         <button id="btnNegativo">Negativo</button>
                         <button id="btnBrillo">Brillo</button>
@@ -36,21 +71,29 @@
                         <button id="btnDeteccion">Deteccion de bordes</button>
                         <button id="btnBlur">Blur</button>
                 </div>
-                <div class="nav-options" hidden><button id="nuevo">Nuevo</button> para subir imagen, nuevo lienzo guardar imagen, filtros</div>
-                        
-        </div>
+                
+        </div>-->
+        <!-- <div class="nav-options" hidden><button id="nuevo">Nuevo</button> para subir imagen, nuevo lienzo guardar imagen, filtros</div>
+                 -->        
         <div class="paginaPaintOnline">
                 <div class="container">
                         <div class="barra-herramientas">
                                 <div class="herramientas">
-                                        <button id="btnPencil">lapiz</button> 
-                                        <button id="btnRubber">goma</button>                        
+                                        <button id="btnPencil" class="btn"> <i  class="fas fa-pen-square"></i></button> 
+                                        <button id="btnRubber" class="btn"> <i  class="fas fa-eraser"></i></button>                        
                                 </div>
                                 <div class="color-pick">
                                         <div>Color picker</div>
                                         <canvas id="color-picker" width="128" height="128"></canvas>
                                         <div>Color actual</div>
                                         <div id="color-actual"></div>
+                                </div>
+                                <div class="opc-lapiz">
+                                        <div>Tama&ntilde;o de trazo</div>
+                                        <div class="contOpcLapiz">
+                                                <input type="number"min="1"max="60" name="inputPencilWidth" id="inputPencilWidth">        
+                                                <div class="txtOpcLapiz">px</div>
+                                        </div>
                                 </div>
                                 
                          </div>
@@ -60,8 +103,17 @@
                         </div>
                 </div>
         </div>
+        <div id="cortinaFondo" class="cortinaFondo"></div>
+        <div id="panelSubirImg">
+                 <div class="panel">
+                                <input type="file" id="imagenFile"name="imagenFile" >
+                                <button type="button" id="btnUrl"name="button">Subir</button>
+                 </div>
+        </div>
 	</body>
 	<script src="js/paint.js" >
         </script>
         <script src="js/filtros.js"></script>
+        <script src="js/ui.js"></script>
+        <a  id="link" hidden></a>
 </html>

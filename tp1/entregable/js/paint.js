@@ -65,7 +65,11 @@ let canvas =document.getElementById("lienzo");
                                                 let img= new Image();
                                                 img.src = evt.target.result;
                                                 img.onload=(ev)=>{
-                                                        ctx.drawImage(img,0,0);
+                                                        ctx.drawImage(img,0,0);                                          
+                                                        let panelSubida=document.getElementById("panelSubirImg");
+                                                        let cortinaFondo=document.getElementById("cortinaFondo");
+                                                        panelSubida.style.display="none";
+                                                        cortinaFondo.style.display="none";
                                                 };
                                                 
                                         }
@@ -114,7 +118,7 @@ let canvas =document.getElementById("lienzo");
 
 
 var isClickPressed= false;
-var pencilWidth= 2;
+
 var oldPos=null;
         canvas.onmousedown=()=>{
                 console.log(true);
@@ -135,7 +139,7 @@ var oldPos=null;
                 oldPos=mousePos;
                 }
         }
-        let isPencil=true;
+        let isPencil=null;
         canvas.addEventListener('mousemove', function(evt) {
                 if(isClickPressed){
                         var mousePos = getMousePos(canvas, evt);
@@ -149,7 +153,7 @@ var oldPos=null;
                                 context.lineTo(mousePos.x,mousePos.y);
                                 context.lineCap="round";
                                 context.strokeStyle=colorPicked;
-                                context.lineWidth=2;
+                                context.lineWidth=pencilWidth;
                                 context.stroke();
                         } else if(isPencil!==null && isPencil==false){
                                 context.beginPath();
@@ -176,14 +180,37 @@ var oldPos=null;
         ctx.fillStyle=lienzoBGColor;
         ctx.fillRect(0,0,canvas.width,canvas.height);
       }
-      document.getElementById("nuevo").addEventListener('click',limpiarLienzo,false);
+      document.getElementById("nuevo").onclick=limpiarLienzo;
       function setPencil(){
+              console.log('Pencil setted');
+              btnPencil.style.background="yellow";
+              btnRubber.style.background="darkGrey";
         isPencil=true;
       }
-      document.getElementById("btnPencil").addEventListener('click',setPencil,false);
+      let btnPencil=document.getElementById("btnPencil")
+      btnPencil.onclick=setPencil;
       function setRubber(){
+        console.log('Rubber setted');
+        btnPencil.style.background="darkGrey";
+        btnRubber.style.background="yellow";
         isPencil=false;
       }
-      document.getElementById("btnRubber").addEventListener('click',setRubber,false);
+      let inputPencil=document.getElementById("inputPencilWidth");
+      let pencilWidth=1;
+      inputPencil.onchange=()=>{
+              pencilWidth=0+inputPencil.value;
+      }
+      let btnRubber=document.getElementById("btnRubber");
+      btnRubber.onclick=setRubber;
+      let btnGuardar=document.getElementById("btnGuardar");
+      btnGuardar.onclick=()=>{
+                let tiempo=new Date();
+                let dia= tiempo.getDate()+"-"+(tiempo.getMonth()+1)+"-"+tiempo.getFullYear();
+                let link=document.getElementById('link');
+                let url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  
+                link.setAttribute('download', 'Dibujo_'+dia+'.png');
+                link.setAttribute('href', url);
+                link.click();
+        }
 
         
