@@ -153,7 +153,7 @@ function Filtro() {
         var i=((x+y*imd.width)*4);
         var colors=this.getRGB(imd,x,y);
         var hsv= RGBtoHSV ([colors.red,colors.green,colors.blue]);
-        hsv[1] *= 1.8;
+        hsv[1] *= 0.8;
         var rgb= HSVtoRGB(hsv);
         imd.data[i+0]=rgb[0];
         imd.data[i+1]=rgb[1];
@@ -190,7 +190,7 @@ function Filtro() {
     for (var x = 0; x < imd.width; x++) {
       for (var y = 0; y < imd.height; y++) {
         var i=((x+y*imd.width)*4);
-        imd.data[i+3]=100;
+        imd.data[i+3]-=80;
       }
     }
     ctx.putImageData(imd,0,0);
@@ -258,13 +258,13 @@ document.getElementById("btnBrillo").onclick=function(ev){
     ajuste=1.5;
     herramientaFiltro.saturacion(ctxOriginal,imageData,ajuste);
   };
-  /* document.getElementById("btnTransparencia").onclick=function(ev){
+  document.getElementById("btnSuavizado").onclick=function(ev){
     ev.preventDefault();
 	  ctxOriginal.drawImage(imgOriginal,0,0,imgOriginal.width,imgOriginal.height);
     var imageData=ctxOriginal.getImageData(0,0,canvasOriginal.width,canvasOriginal.height);
     var herramientaFiltro=new Filtro();
     herramientaFiltro.transparencia(ctxOriginal,imageData);
-  }; */
+  };
   document.getElementById("btnBlur").onclick=function(ev){
     ev.preventDefault();
     ctxOriginal.drawImage(imgOriginal,0,0,imgOriginal.width,imgOriginal.height);

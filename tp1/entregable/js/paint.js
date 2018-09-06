@@ -65,6 +65,10 @@ let canvas =document.getElementById("lienzo");
                                                 let img= new Image();
                                                 img.src = evt.target.result;
                                                 img.onload=(ev)=>{
+                                                        if(img.width >canvas.width||img.height>canvas.height){
+                                                                canvas.width=img.width;
+                                                                canvas.height=img.height;
+                                                        }
                                                         ctx.drawImage(img,0,0);                                          
                                                         let panelSubida=document.getElementById("panelSubirImg");
                                                         let cortinaFondo=document.getElementById("cortinaFondo");

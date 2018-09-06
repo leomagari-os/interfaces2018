@@ -38,7 +38,7 @@
                         </ul>
                         <ul id="contAdvancedFilters" >
                                 <li id="btnSaturacion">Saturacion</li>
-                                <li id="btnSuavizado">Suavizado</li>
+                                <li id="btnSuavizado">Transparencia</li>
                                 <li id="btnDeteccion">Deteccion de bordes</li>
                                 <li id="btnBlur">Blur</li>
                         </ul>
@@ -105,10 +105,15 @@
         </div>
         <div id="cortinaFondo" class="cortinaFondo"></div>
         <div id="panelSubirImg">
+                <div class="title font-nav">
+                        <span class="titleText">Subir Imagen</span> 
+                        <span id="cancelar"><i class="fas fa-times"></i></span></div>
                  <div class="panel">
-                                <input type="file" id="imagenFile"name="imagenFile" >
-                                <button type="button" id="btnUrl"name="button">Subir</button>
+                        <div class="font-nav"> Subir imagen</div>
+                                <input type="file" id="imagenFile"name="imagenFile" class="subir" >
+                               
                  </div>
+                 
         </div>
 	</body>
 	<script src="js/paint.js" >
