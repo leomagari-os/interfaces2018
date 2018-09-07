@@ -249,3 +249,9 @@ width: 100%;
 text-align: center;
 margin-top: 10px;
 }
+.logo img{
+    width: 32px;
+    position: fixed;
+    left: 5px;
+    top: 5px;
+}
