@@ -1,9 +1,4 @@
-/* var imgOriginal= function (){
-  return ctx.getImageData(0,0,canvas.width,canvas.height);
-  
-} */
 
-//previewFiltro();
 var matrices={
   "blur":[[1,2,1],
           [2,4,2],
@@ -76,38 +71,10 @@ function Filtro() {
     ctx.putImageData(imdNuevo, 0, 0);
   };
 
-  this.cargarCanvas=function (img) {
-    //Carga de canvas de thumbnails y sus contextos
-    canvas=[document.getElementById("filtro1"),
-      document.getElementById("filtro2"),
-      document.getElementById("filtro3"),
-      document.getElementById("filtro4"),
-      document.getElementById("filtro5"),
-      document.getElementById("filtro6")];
 
-    ctx=[canvas[0].getContext("2d"),
-      canvas[1].getContext("2d"),
-      canvas[2].getContext("2d"),
-      canvas[3].getContext("2d"),
-      canvas[4].getContext("2d"),
-      canvas[5].getContext("2d")];
-    //Redimensionado de la imagen
-    ctx[0].drawImage(img,0,0,150,100);
 
-    var imd=[];
-    for (var i = 0; i < ctx.length; i++) {
-      imd[i]=ctx[0].getImageData(0,0,150,100);
-    }
-    //aplico los filtros a las thumbnails
-
-    this.blancoYNegro(ctx[0],imd[0]);
-    this.negativo(ctx[1],imd[1]);
-    this.sepia(ctx[2],imd[2]);
-    this.transparencia(ctx[3],imd[3]);
-
-    this.blur(this.matrizBlur,ctx[4],imd[4]);
-    this.deteccionDeBordes(this.matrizDeteccionDeBordes,ctx[5],imd[5]);
-    };
+   
+    
   //FILTROS
   this.blancoYNegro=function(ctx,imd){
     for (var x = 0; x < imd.width; x++) {
