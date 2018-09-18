@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0; 
+}
+nav{
+    padding:10px 0;
+}
+.cont-juego{
+    padding: 0 5px;
+}
+.cortinaFondo{
+    background: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+.panel-nombres{
+    text-align: center;
+    position: fixed;
+    width: calc(100% - 200px);
+    height: calc(100% - 200px);
+    padding: 50px 0;
+    left:100px;
+    top: 50px;
+    background: cadetblue;
+    border-radius: 35px;
+}
+.input-group{
+    margin-top:10px;
+}
+.btn-start{
+    background: green;
+    padding: 10px 5px;
+    border-radius: 15px;
+    border: transparent;
+}
