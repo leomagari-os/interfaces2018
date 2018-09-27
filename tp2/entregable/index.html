@@ -6,13 +6,28 @@
     <title>Jugar al Cuatro en linea</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet"> 
+                
 </head>
-<body>
-    <nav>inicio ,logo y otras cosas</nav>
-    <div class="cortinaFondo" hidden></div>
+<body> <div class="nav">
+    <div class="logo">
+            <img src="images/icono.png" alt="logo">
+            <span class="textLogo"> Conecta 4!</span>
+    </div>
+    <ul>
+            <li>
+                    <div class="separador">Inicio</div>
+                    
+            </li>
+            
+            
+            
+    </ul>
+</div>
+    <div class="cortinaFondo" id="cortinaFondo"></div>
     <div class="pagina-container">
         
-        <div class="panel-nombres" hidden>
+        <div class="panel-nombres"id="panel-nombres" >
             <form action="#">
                 <div class="panel-title"><h4>Cuatro En Linea</h4></div>
                 <div class="input-group">
@@ -28,8 +43,16 @@
                 </div>
             </form>
         </div>
+        <div class="panel-ganador"id="panelGanador"hidden >
+            <h2>
+                Ganador!!
+                <span id="ganador"></span>
+                <a href="#" id="reset">Empezar otra vez</a>
+                
+            </h2>
+        </div>
         <div class="cont-juego">
-            <canvas id="juego" style="background: #6624ff;"width="1024px" height="600px"></canvas>
+            <canvas id="juego" width="1024px" height="600px"></canvas>
         </div>
         <div class="reglas-cont">Explicacion reglas y esas cosas</div>
     </div>

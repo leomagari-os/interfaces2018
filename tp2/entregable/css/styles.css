@@ -1,9 +1,48 @@
 body{
+    background:url("Wiki-background.jpg");
     margin: 0;
     padding: 0; 
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 }
 nav{
     padding:10px 0;
+}
+.nav{
+    background: darkcyan;
+    font-family:'Open Sans', sans-serif;
+    color: white;   
+    font-size: 17px;
+    font-style: bold;
+    font-weight: 400;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    
+}
+.logo{
+    display: initial;
+    margin-left: 40px;
+    font-weight: 800;
+}
+.separador{
+    background: darkcyan;
+    padding:10px 8px;
+}
+.separador:hover{
+    background: rgb(2, 82, 82);
+}
+ul{
+    display: inline;
+    list-style: none;
+}
+li{
+    display: inline-block;
 }
 .cont-juego{
     padding: 0 5px;
@@ -28,6 +67,17 @@ nav{
     background: cadetblue;
     border-radius: 35px;
 }
+.panel-ganador{
+    text-align: center;
+    position: fixed;
+    width: calc(100% - 200px);
+    height: calc(100% - 200px);
+    padding: 50px 0;
+    left:100px;
+    top: 50px;
+    background: cadetblue;
+    border-radius: 35px;
+}
 .input-group{
     margin-top:10px;
 }
@@ -36,4 +86,14 @@ nav{
     padding: 10px 5px;
     border-radius: 15px;
     border: transparent;
+}
+#juego{
+    background: rgba(0,0,0,0.1);
+    border: solid 3px green;
+    border-radius: 15px;
+    margin-left: 100px;
+}
+.pagina-container{
+    margin-top: 80px;
+    margin-bottom: 80px;
 }

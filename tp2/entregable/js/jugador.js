@@ -1,6 +1,6 @@
 class Jugador{
-    constructor(){
-        this.nombre="";
+    constructor(nombre){
+        this.nombre=nombre;
         this.piezasRestantes=0;
         this.piezaDragged=null;
 
