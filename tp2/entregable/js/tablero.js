@@ -260,8 +260,8 @@ class Tablero{
             console.log("colBase:"+colBase);
             let col=colBase;
             let fil=0;
-            var consecutivas=0;
-            var actual=null;
+            let consecutivas=0;
+            let actual=null;
             while (col>=0&&fil<6) {
                 if(actual==null){
                     if(this.ranuras[col][fil]!=0){
@@ -292,13 +292,46 @@ class Tablero{
                 }
                 fil++;
                 col--;
-            }
-            /* for(let fil=0;fil<6;fil++){
-               
-            } */
-            
+            }            
         }
-            
+        //para controlar 2 filas adicionales
+        for(let fil =1;fil<3;fil++){
+            let consecutivas=0;
+            let actual=null;
+            let col=6;
+            while (col>=0&&fil<6) {
+                if(actual==null){
+                    if(this.ranuras[col][fil]!=0){
+                        consecutivas=1;
+                        actual=this.ranuras[col][fil].getNombre();
+                        console.log("ficha actual : "+actual+" consecutivas:"+consecutivas);
+                    }
+                }else{
+                    if(this.ranuras[col][fil]!=0){
+                        console.log("no es ganador");
+                        if(actual==this.ranuras[col][fil].getNombre()){
+                            consecutivas++;
+                            console.log("consecutivas: "+ consecutivas);
+                        }else{
+                            consecutivas=1;
+                            actual=this.ranuras[col][fil].getNombre();
+                            console.log("se evalua la ficha del jugador: "+actual);
+                        }
+                        if(consecutivas==4){
+                            console.log("ganasteeee1 "+actual);
+                            return actual;
+                        }
+                
+                    }else{
+                        actual=null;
+                    }
+    
+                }
+                fil++;
+                col--;
+            }            
+        }
+        
         
         return null;
     }
