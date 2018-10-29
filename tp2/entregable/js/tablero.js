@@ -160,18 +160,20 @@ class Tablero{
           return this.tablero[col][fil].getPos();
       }
       checkGanador(){
-        console.log("chequeando filas...");
+       /*  console.log("chequeando filas...");
         let ganador=this.checkHorizontal();
         if(ganador!=null)
          return ganador;
         console.log("chequeando columnas...");
         ganador=this.checkVertical();
         if(ganador!=null)
+         return ganador; */
+        console.log("chequeando diagonales izq...");
+        let ganador=this.checkDiagonalIzq();
+        if(ganador!=null)
          return ganador;
-        /* console.log("chequeando diagonales izq...");
-        ganador=this.checkDiagonalIzq();
-        console.log("chequeando diagonales der...");
-         */
+        /* console.log("chequeando diagonales der..."); */
+        
         console.log("sin ganador?");
         return null;
       }
@@ -254,9 +256,50 @@ class Tablero{
         //chequeo las diagonales usando como base una seccion del 
         //tablero(filas:0,1,2 y 
         //columnas:3,4,5,6)
-        for(var fil=3;fil<this.ranuras[0].length;fil++){
+        for(let colBase=3;colBase<7;colBase++){
+            console.log("colBase:"+colBase);
+            let col=colBase;
+            let fil=0;
+            var consecutivas=0;
+            var actual=null;
+            while (col>=0&&fil<6) {
+                if(actual==null){
+                    if(this.ranuras[col][fil]!=0){
+                        consecutivas=1;
+                        actual=this.ranuras[col][fil].getNombre();
+                        console.log("ficha actual : "+actual+" consecutivas:"+consecutivas);
+                    }
+                }else{
+                    if(this.ranuras[col][fil]!=0){
+                        console.log("no es ganador");
+                        if(actual==this.ranuras[col][fil].getNombre()){
+                            consecutivas++;
+                            console.log("consecutivas: "+ consecutivas);
+                        }else{
+                            consecutivas=1;
+                            actual=this.ranuras[col][fil].getNombre();
+                            console.log("se evalua la ficha del jugador: "+actual);
+                        }
+                        if(consecutivas==4){
+                            console.log("ganasteeee1 "+actual);
+                            return actual;
+                        }
+                
+                    }else{
+                        actual=null;
+                    }
+    
+                }
+                fil++;
+                col--;
+            }
+            /* for(let fil=0;fil<6;fil++){
+               
+            } */
             
         }
+            
+        
         return null;
     }
 }
