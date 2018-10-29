@@ -164,53 +164,51 @@ class Tablero{
         let ganador=this.checkHorizontal();
         if(ganador!=null)
          return ganador;
-        console.log("chequeando columnas...");
-        ganador=this.checkVertical();
+       /*  console.log("chequeando columnas...");
+        //ganador=this.checkVertical();
         if(ganador!=null)
          return ganador;
         console.log("chequeando diagonales izq...");
         ganador=this.checkDiagonalIzq();
         console.log("chequeando diagonales der...");
         
-        console.log("sin ganador?");
+        console.log("sin ganador?"); */
         return null;
       }
       checkHorizontal(){
-        for(var fil=0;fil<this.ranuras[0].length;fil++){
-            var consecutivas=0;
-            var actual=null;
-            if(this.ranuras[fil][0]!=0){
-                consecutivas=1;
-                actual=this.ranuras[fil][0].getNombre();
-            }
-            for (let col = 0; col<this.ranuras[fil].length;col++) {
-                console.log(fil);
-                if(this.ranuras[col][fil]!=0){
-                    if(consecutivas==4){
-                        console.log("ganasteee2 "+actual);
-                        return actual;
+        for(var fil=0;fil<6;fil++){
+            console.log("fila:"+fil);
+            let consecutivas=1;
+            let actual=null;
+            
+            for (let col = 0; col<7;col++) {
+                console.log("col:"+col);
+                if(actual==null){
+                    if(this.ranuras[col][fil]!=0){
+                        consecutivas=1;
+                        actual=this.ranuras[col][fil].getNombre();
+                        console.log("ficha actual : "+actual+" consecutivas:"+consecutivas);
                     }
-                    console.log("no es ganador");
-                    if(actual!=null){
+                }else{
+                    if(this.ranuras[col][fil]!=0){
+                        console.log("no es ganador");
                         if(actual==this.ranuras[col][fil].getNombre()){
-                            console.log("ganador: "+ consecutivas);
-                            consecutivas=consecutivas+1;
+                            consecutivas++;
+                            console.log("consecutivas: "+ consecutivas);
                         }else{
-                            console.log("ganador: ");
                             consecutivas=1;
                             actual=this.ranuras[col][fil].getNombre();
+                            console.log("se evaluan las fichas del jugador: "+actual);
                         }
-                        
+                        if(consecutivas==4){
+                            console.log("ganasteee2 "+actual);
+                            return actual;
+                        }
                     }else{
-                        console.log(this.ranuras[col][fil]);
-                        if(this.ranuras[col][fil]){
-                            actual=this.ranuras[col][fil].getNombre();
-                        }
-                        
+                        actual=null;
                     }
-            
                 }
-                
+             
             }
         }
           return null;
@@ -254,6 +252,12 @@ class Tablero{
         }
     }
     checkDiagonalIzq(){
+        //chequeo las diagonales usando como base una seccion del 
+        //tablero(filas:0,1,2 y 
+        //columnas:3,4,5,6)
+        for(var fil=3;fil<this.ranuras[0].length;fil++){
+            
+        }
         return null;
     }
 }
