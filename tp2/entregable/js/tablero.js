@@ -160,50 +160,29 @@ class Tablero{
           return this.tablero[col][fil].getPos();
       }
       checkGanador(){
-          for(var fil=0;fil<this.ranuras[0].length;fil++){
+        console.log("chequeando filas...");
+        let ganador=this.checkHorizontal();
+        if(ganador!=null)
+         return ganador;
+        console.log("chequeando columnas...");
+        ganador=this.checkVertical();
+        if(ganador!=null)
+         return ganador;
+        console.log("chequeando diagonales izq...");
+        ganador=this.checkDiagonalIzq();
+        console.log("chequeando diagonales der...");
         
+        console.log("sin ganador?");
+        return null;
+      }
+      checkHorizontal(){
+        for(var fil=0;fil<this.ranuras[0].length;fil++){
             var consecutivas=0;
             var actual=null;
             if(this.ranuras[fil][0]!=0){
                 consecutivas=1;
                 actual=this.ranuras[fil][0].getNombre();
             }
-            console.log("check Vertical");
-            for(var f=0;f<this.ranuras[0].length;f++){
-                console.log(f);
-                if(this.ranuras[fil][f]!=0){
-                    if(consecutivas==4){
-                        console.log("ganasteeee1 "+actual);
-                        return actual;
-                    }
-                    console.log("no es ganador");
-                    if(actual!=null){
-                        if(actual==this.ranuras[fil][f].getNombre()){
-                            console.log("ganador: "+ consecutivas);
-                            consecutivas=consecutivas+1;
-                        }else{
-                            console.log("ganador: ");
-                            consecutivas=1;
-                            actual=this.ranuras[fil][f].getNombre();
-                        }
-                        
-                    }else{
-                        console.log(this.ranuras[fil][f]);
-                        if(this.ranuras[fil][f]){
-                            actual=this.ranuras[fil][f].getNombre();
-                        }
-                        
-                    }
-            
-                }
-            }
-            //check por fila
-            if(this.ranuras[0][fil]!=0){
-                consecutivas=1;
-                actual=this.ranuras[0][fil].getNombre();
-            }
-            console.log("check horizontal");
-            
             for (let col = 0; col<this.ranuras[fil].length;col++) {
                 console.log(fil);
                 if(this.ranuras[col][fil]!=0){
@@ -233,9 +212,48 @@ class Tablero{
                 }
                 
             }
-              
-          }  
-          console.log("checkeando ganador");
+        }
           return null;
       }
+      checkVertical(){
+        for(var fil=0;fil<this.ranuras[0].length;fil++){
+            var consecutivas=0;
+            var actual=null;
+            if(this.ranuras[fil][0]!=0){
+                consecutivas=1;
+                actual=this.ranuras[fil][0].getNombre();
+            }
+            for(var f=0;f<this.ranuras[0].length;f++){
+                console.log(f);
+                if(this.ranuras[fil][f]!=0){
+                    if(consecutivas==4){
+                        console.log("ganasteeee1 "+actual);
+                        return actual;
+                    }
+                    console.log("no es ganador");
+                    if(actual!=null){
+                        if(actual==this.ranuras[fil][f].getNombre()){
+                            console.log("ganador: "+ consecutivas);
+                            consecutivas=consecutivas+1;
+                        }else{
+                            console.log("ganador: ");
+                            consecutivas=1;
+                            actual=this.ranuras[fil][f].getNombre();
+                        }
+                        
+                    }else{
+                        console.log(this.ranuras[fil][f]);
+                        if(this.ranuras[fil][f]){
+                            actual=this.ranuras[fil][f].getNombre();
+                        }
+                        
+                    }
+            
+                }
+            }
+        }
+    }
+    checkDiagonalIzq(){
+        return null;
+    }
 }

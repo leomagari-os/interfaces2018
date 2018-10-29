@@ -1,14 +1,40 @@
+@keyframes mover{
+    0%,100%{
+        background-position-x: -200px;
+    }
+    50%{
+        background-position-x: 500px;    
+    }
+}
 body{
     background:url("Wiki-background.jpg");
     margin: 0;
     padding: 0; 
-
+    background-size: 125% 125%;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
+    animation-name: mover; 
+    animation-duration: 60s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+.panel-title{
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    color:white;
+}
+label{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+input{
+    padding-left:5px;
+    font-family: 'Open Sans', sans-serif;
 }
 nav{
     padding:10px 0;
@@ -82,13 +108,21 @@ li{
     margin-top:10px;
 }
 .btn-start{
-    background: green;
+    background: #004a80;
+    color: white;
     padding: 10px 5px;
     border-radius: 15px;
     border: transparent;
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    width: 200px;
+    box-shadow: 0px 0px 10px 0px #3a4556;
 }
 #juego{
     background: rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px #564b4b;
     border: solid 3px green;
     border-radius: 15px;
     margin-left: 100px;
