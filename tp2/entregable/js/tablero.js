@@ -160,12 +160,12 @@ class Tablero{
           return this.tablero[col][fil].getPos();
       }
       checkGanador(){
-        /* console.log("chequeando filas...");
+        console.log("chequeando filas...");
         let ganador=this.checkHorizontal();
         if(ganador!=null)
          return ganador;
-         */console.log("chequeando columnas...");
-        let ganador=this.checkVertical();
+        console.log("chequeando columnas...");
+        ganador=this.checkVertical();
         if(ganador!=null)
          return ganador;
         /* console.log("chequeando diagonales izq...");
