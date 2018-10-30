@@ -142,3 +142,8 @@ li{
     padding: 10px 50px;
     border-radius: 10px;
 }
+#reset{
+    text-decoration: none;
+    display: block;
+    margin: auto;
+}
