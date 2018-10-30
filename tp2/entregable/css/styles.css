@@ -131,3 +131,14 @@ li{
     margin-top: 80px;
     margin-bottom: 80px;
 }
+#display-error{
+    font-family: 'Open Sans', sans-serif;
+    color: red;
+    background: #e6afaf;
+    font-weight: 800;
+    width: 200px;
+    margin: auto;
+    border: solid 2px #ff3737;
+    padding: 10px 50px;
+    border-radius: 10px;
+}

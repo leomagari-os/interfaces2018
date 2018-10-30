@@ -35,10 +35,10 @@ class Juego{
         tablero.limpiarTablero();
     }
     writeMessage(ctx, message, pos,style) {
-        ctx.clearRect(pos.xIni, pos.yIni, pos.xEnd, pos.yEnd);
-        ctx.font =style.font;// '18pt Calibri';
-        ctx.fillStyle = style.color;//'black';
-        ctx.fillText(message.text, message.posX,messsage.posY);
+       /*  ctx.clearRect(pos.xIni, pos.yIni, pos.xEnd, pos.yEnd);
+         */ctx.font ='18pt Calibri';//style.font;// '18pt Calibri';
+        ctx.fillStyle ='black'; //style.color;//'black';
+        ctx.fillText(message, pos.x,pos.y);
     }
     getTurnoActual(){
         return this.turnoActual;
@@ -54,7 +54,7 @@ class Juego{
     }
     setFichasPosicionOriginal(fichaJ1,fichaJ2){
         console.log("Se devuelve la ficha a su posicion por falta de lugar en el tablero");
-        fichaJ1.setPos({x:50,y:50});
-        fichaJ2.setPos({x:50,y:150});
+        fichaJ1.setPos({x:100,y:150});
+        fichaJ2.setPos({x:100,y:350});
     }
 }

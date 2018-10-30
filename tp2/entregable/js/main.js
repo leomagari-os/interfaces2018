@@ -19,8 +19,8 @@ reset.onclick=()=>{
     location.reload();
 }
 // fichas
-let ficha=new Ficha(50,50,25,img1,"red","f");
-let ficha2=new Ficha(50,150,25,img2,"white","1");
+let ficha=new Ficha(50,150,25,img1,"red","f");
+let ficha2=new Ficha(50,350,25,img2,"white","1");
 img1.onload=()=>{
     ficha.draw(ctx);
 };
@@ -73,10 +73,18 @@ btnStart.onclick=(ev)=>{
         document.getElementById("cortinaFondo").hidden=true;
         document.getElementById("panel-nombres").hidden=true;
         juego=new Juego(nombreJugador1,nombreJugador2);
-        ficha=new Ficha(50,50,25,img1,"red",nombreJugador1);
-        ficha2=new Ficha(50,150,25,img2,"white",nombreJugador2);
+        ficha=new Ficha(100,150,25,img1,"red",nombreJugador1);
+        ficha2=new Ficha(100,350,25,img2,"white",nombreJugador2);
         juego.start();
+        dibujarNombres();
+    }else{
+        showError("Los nombres no pueden ser iguales");
     }
+}
+function showError(msg){
+    let error=document.getElementById("display-error");
+    error.innerText=msg;
+    error.hidden=false;
 }
 function limpiarCanvas(){
     ctx=canvas.getContext("2d");
@@ -93,8 +101,22 @@ function  redibujar(evt){
         fichaSel.setPos(pos);
         ficha2.draw(ctx);
         ficha.draw(ctx);
-        
+        dibujarNombres();
     }
+    /* let messageActual="";
+    if(juego.getTurnoActual()%2){
+        messageActual="jugador 1: "+nombreJugador1+" <";
+        juego.writeMessage(ctx, messageActual, {x:50,y:100},null);
+        message="jugador 2: "+nombreJugador2;
+        juego.writeMessage(ctx, message, {x:50,y:300},null) 
+    }else{
+        messageActual="jugador 2: "+nombreJugador2+" <";
+        juego.writeMessage(ctx, messageActual, {x:50,y:300},null) 
+        message="jugador 1: "+nombreJugador1;
+        juego.writeMessage(ctx, message, {x:50,y:100},null);
+        
+    } */
+   
 }
 function inicio(){
     ctx.fillStyle="white";
@@ -135,14 +157,20 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
     }
   
   }
-
-//TEST
-function testDrawFicha(ficha,ctx){
-    ficha.draw(ctx);
-}
-
-function testIsClickedFicha(ficha,pos){
-    console.log(ficha.isClicked(pos));
+function dibujarNombres(){
+    let messageActual="";
+    if(juego.getTurnoActual()%2){
+        messageActual="jugador 1: "+nombreJugador1+" <";
+        juego.writeMessage(ctx, messageActual, {x:50,y:100},null);
+        message="jugador 2: "+nombreJugador2;
+        juego.writeMessage(ctx, message, {x:50,y:300},null) 
+    }else{
+        messageActual="jugador 2: "+nombreJugador2+" <";
+        juego.writeMessage(ctx, messageActual, {x:50,y:300},null) 
+        message="jugador 1: "+nombreJugador1;
+        juego.writeMessage(ctx, message, {x:50,y:100},null);
+        
+    }
 }
 
 
@@ -275,6 +303,7 @@ document.onmouseup=(ev)=>{
           
            fichaSel.setPosOriginal();
             limpiarCanvas();
+            dibujarNombres();
             tablero.dibujarTablero(canvas);
             tablero.dibujarFichas(ctx);
             fichaSel.draw(ctx);
@@ -314,7 +343,7 @@ canvas.onclick=()=>{
    
     //console.log(ficha.isClicked(pos));
 }
-testDrawFicha(ficha,ctx);
+
 
 //test click ficha
 
@@ -322,6 +351,6 @@ testDrawFicha(ficha,ctx);
 //test dibujarTablero
 
 //test CrearJuego
-console.log(tablero.getRanuraPos(0,5));
+
 //test ui
 //inicio();
