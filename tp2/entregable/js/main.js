@@ -3,6 +3,10 @@
 let canvas=document.getElementById("juego");
 let ctx=canvas.getContext("2d");
 //juego
+let img1=new Image();
+img1.src="images/marioIcon.png";
+let img2=new Image();
+img2.src="images/yoshiIcon.png";
 
 
 //boton start 
@@ -15,9 +19,14 @@ reset.onclick=()=>{
     location.reload();
 }
 // fichas
-let ficha=new Ficha(50,50,25,"hola","red","f");
-let ficha2=new Ficha(50,150,25,"hola","white","1");
-
+let ficha=new Ficha(50,50,25,img1,"red","f");
+let ficha2=new Ficha(50,150,25,img2,"white","1");
+img1.onload=()=>{
+    ficha.draw(ctx);
+};
+img2.onload=()=>{
+    ficha2.draw(ctx);
+};
 //ficha seleccionada(puede ser la 1 o la 2)
 let fichaSel=null;
 //pos del mouse
@@ -39,8 +48,7 @@ tablero.setFichas();
 tablero.dibujarFichas(ctx);
 
 //dibujar fichas
-ficha.draw(ctx);
-ficha2.draw(ctx);
+
 function drawUi(ctx){
     //dibujar rectangulo contenedor de datos del juego
     //NombreJ1,NombreJ2,TurnoActual,PiezasRestantes.
@@ -65,8 +73,8 @@ btnStart.onclick=(ev)=>{
         document.getElementById("cortinaFondo").hidden=true;
         document.getElementById("panel-nombres").hidden=true;
         juego=new Juego(nombreJugador1,nombreJugador2);
-        ficha=new Ficha(50,50,25,"hola","red",nombreJugador1);
-        ficha2=new Ficha(50,150,25,"hola","white",nombreJugador2);
+        ficha=new Ficha(50,50,25,img1,"red",nombreJugador1);
+        ficha2=new Ficha(50,150,25,img2,"white",nombreJugador2);
         juego.start();
     }
 }
@@ -161,7 +169,7 @@ document.onmouseup=(ev)=>{
            
            if(posFicha.x<=tableroPos.x+(ranuraSize.width)){//ranura 0
             //console.log(tablero.getRanuras());
-            let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+            let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
             
             posF=tablero.insertarFicha(0,f);    
             console.log(posF);  
@@ -173,7 +181,7 @@ document.onmouseup=(ev)=>{
             console.log(tablero.getRanuras());
            }else{
                if(posFicha.x<=tableroPos.x+(ranuraSize.width*2)){//ranura 1
-                let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+                let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
             
                 posF=tablero.insertarFicha(1,f);    
                 console.log(posF);  
@@ -186,7 +194,7 @@ document.onmouseup=(ev)=>{
                 
                }else{
                    if(posFicha.x<=tableroPos.x+(ranuraSize.width*3)){//ranura2
-                    let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+                    let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
             
                     posF=tablero.insertarFicha(2,f);    
                     console.log(posF);  
@@ -199,7 +207,7 @@ document.onmouseup=(ev)=>{
                     
                    }else{
                        if(posFicha.x<=tableroPos.x+(ranuraSize.width*4)){//ranura3
-                        let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+                        let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
             
                         posF=tablero.insertarFicha(3,f);    
                         console.log(posF);  
@@ -211,7 +219,7 @@ document.onmouseup=(ev)=>{
                         console.log(tablero.getRanuras());
                        }else{
                            if(posFicha.x<=tableroPos.x+(ranuraSize.width*5)){//ranura4
-                            let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+                            let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
             
                             posF=tablero.insertarFicha(4,f);    
                             console.log(posF);  
@@ -223,7 +231,7 @@ document.onmouseup=(ev)=>{
                             console.log(tablero.getRanuras());
                            }else{
                                if(posFicha.x<=tableroPos.x+(ranuraSize.width*6)){//ranura5
-                                let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+                                let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
             
                                 posF=tablero.insertarFicha(5,f);    
                                 console.log(posF);  
@@ -234,7 +242,7 @@ document.onmouseup=(ev)=>{
                             
                                 console.log(tablero.getRanuras());
                                }else{
-                                    let f=new Ficha(0,0,25,'',fichaSel.getColor(),fichaSel.getNombre());
+                                    let f=new Ficha(0,0,25,fichaSel.getSkin(),fichaSel.getColor(),fichaSel.getNombre());
                 
                                     posF=tablero.insertarFicha(6,f);    
                                     console.log(posF);  

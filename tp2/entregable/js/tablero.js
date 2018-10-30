@@ -37,7 +37,7 @@ class Tablero{
     insertarFicha(c,ficha){
         for(let f=0;f<this.ranuras[c].length;f++){
             if(this.ranuras[c][f]==0){
-                this.ranuras[c][f]=new Ficha(ficha.getPos().x,ficha.getPos().y,ficha.getRadio(),"",ficha.getColor(),ficha.getNombre());
+                this.ranuras[c][f]=new Ficha(ficha.getPos().x,ficha.getPos().y,ficha.getRadio(),ficha.getSkin(),ficha.getColor(),ficha.getNombre());
                 return  f;
             }
         }
@@ -120,7 +120,7 @@ class Tablero{
         for(let col=0;col<7;col++){
             for(let fil=0;fil<6;fil++){
                 //posx=posx+5;
-                let ficha=new Ficha(posx,posy-5,27,"cualca",ranuraColor);
+                let ficha=new Ficha(posx,posy-5,27,null,ranuraColor);
                 let rad=ficha.getRadio();
                 ficha.setPos({x:posx+rad,y:posy-rad-5});
                 this.tablero[col].push(ficha);
@@ -160,22 +160,22 @@ class Tablero{
           return this.tablero[col][fil].getPos();
       }
       checkGanador(){
-       /*  console.log("chequeando filas...");
+        console.log("chequeando filas...");
         let ganador=this.checkHorizontal();
         if(ganador!=null)
-         return ganador;
+            return ganador;
         console.log("chequeando columnas...");
         ganador=this.checkVertical();
         if(ganador!=null)
-         return ganador; */
-        /* console.log("chequeando diagonales izq...");
+            return ganador;
+        console.log("chequeando diagonales izq...");
         ganador=this.checkDiagonalIzq();
         if(ganador!=null)
-         return ganador;
-         */ console.log("chequeando diagonales der..."); 
-         let ganador=this.checkDiagonalDer();
-         if(ganador!=null)
-          return ganador;
+            return ganador;
+        console.log("chequeando diagonales der..."); 
+        ganador=this.checkDiagonalDer();
+        if(ganador!=null)
+            return ganador;
         console.log("sin ganador?");
         return null;
       }

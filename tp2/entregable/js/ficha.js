@@ -1,7 +1,7 @@
 class Ficha{
     constructor(posx,posy,radio,skin,color,nombre){
         this.propietarioName=nombre;
-        this.skinId=null;
+        this.skin=skin;
         this.color=color;
         this.posOriginal={x:posx,y:posy};
         this.posx=posx;
@@ -22,6 +22,9 @@ class Ficha{
         ctx.stroke();
         ctx.fill();
         ctx.closePath();
+        if(this.skin!=null){
+            ctx.drawImage(this.skin,0,0,128,128,this.posx-this.radio,this.posy-this.radio,50,50);
+        }
     }
     isClicked(pos){
         return (Math.pow(pos.x-this.posx,2)+Math.pow(pos.y-this.posy,2) < Math.pow(this.radio,2));
@@ -53,5 +56,8 @@ class Ficha{
     }
     getNombre(){
         return this.propietarioName;
+    }
+    getSkin(){
+        return this.skin;
     }
 }
