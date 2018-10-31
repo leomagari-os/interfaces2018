@@ -1,0 +1,19 @@
+.tam-juego {
+    width: 500px;
+    height: 550px;
+    position: absolute;
+    text-align: center;
+}
+
+.centrado{
+    margin: auto;
+}
+#bg-juego{
+    z-index: -1;
+}
+#fx1-game{
+    z-index: 1;
+}
+#game{
+    z-index: 2;
+}
