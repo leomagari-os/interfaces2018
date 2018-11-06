@@ -16,42 +16,44 @@ function Jugador(){
 	this.power = 0; 	
 }
 
-Jugador.prototype.mover = function()
-{
-	var m = 7; 		// normal movimiento
-	if(ml_j == 1){
-		m  = 3;
-		//this.image = img_pg_slw;
-	        
-	}else{
-	    this.image = img_pg;
-	} // slow
-	
-	// diagonal movimiento
-	if(arr_j + ab_j + izq_j + der_j > 1)
-    	m = m * 0.7;
-	
-	// actualiza la posicion del Jugador 
-	if(arr_j == 1) 
-		this.movimiento.yActual -= m;
-	if(ab_j == 1) 
-		this.movimiento.yActual += m;
-	if(izq_j == 1) 
-		this.movimiento.xActual -= m;
-	if(der_j == 1) 
-		this.movimiento.xActual += m;
+Jugador.prototype.mover = function(){
+	if(this.vida!=0){
+		var m = 7; 		// normal movimiento
+		if(ml_j == 1){
+			m  = 3;
+			//this.image = img_pg_slw;
+				
+		}else{
+			this.image = img_pg;
+		} // slow
 		
-	// para no irse de la pantalla
-	if(this.movimiento.xActual >= bg.w - bg.padding-100)
-		this.movimiento.xActual = bg.w - bg.padding-100;
-	if(this.movimiento.xActual <= bg.padding) 
-		this.movimiento.xActual = bg.padding;
-	if(this.movimiento.yActual >= bg.h - bg.padding) 
-		this.movimiento.yActual = bg.h - bg.padding;
-	if(this.movimiento.yActual <= bg.padding)
-		this.movimiento.yActual = bg.padding;
-		this.element.style.left=this.movimiento.xActual+"px";
-		this.element.style.bottom=this.movimiento.yActual+"px";
+		// diagonal movimiento
+		if(arr_j + ab_j + izq_j + der_j > 1)
+			m = m * 0.7;
+		
+		// actualiza la posicion del Jugador 
+		if(arr_j == 1) 
+			this.movimiento.yActual -= m;
+		if(ab_j == 1) 
+			this.movimiento.yActual += m;
+		if(izq_j == 1) 
+			this.movimiento.xActual -= m;
+		if(der_j == 1) 
+			this.movimiento.xActual += m;
+			
+		// para no irse de la pantalla
+		if(this.movimiento.xActual >= bg.w - bg.padding-100)
+			this.movimiento.xActual = bg.w - bg.padding-100;
+		if(this.movimiento.xActual <= bg.padding) 
+			this.movimiento.xActual = bg.padding;
+		if(this.movimiento.yActual >= bg.h - bg.padding) 
+			this.movimiento.yActual = bg.h - bg.padding;
+		if(this.movimiento.yActual <= bg.padding)
+			this.movimiento.yActual = bg.padding;
+			this.element.style.left=this.movimiento.xActual+"px";
+			this.element.style.bottom=this.movimiento.yActual+"px";
+	
+	}
 }
 
 // fire bullets

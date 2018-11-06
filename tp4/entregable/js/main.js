@@ -104,6 +104,12 @@ function work(){
 	for (var i = 0; i < spawned.length; i++)
 	    enemigos[enemigos.length] = spawned[i];
 	
+	if (jg.vida < 1){
+		console.log("GAME OVER");
+		img_pg.classList.toggle("explosion");
+		clearInterval(interval);
+	}
+	        
 	// pasa de nivel
 	if (powerups.length == 0 && enemigos.length == 0 && bullets.length == 0 && level.finished == 1){
 	        currentLevel += 1;
