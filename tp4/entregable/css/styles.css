@@ -3,6 +3,7 @@
     height: 550px;
     position: absolute;
     text-align: center;
+    overflow: hidden;
 }
 
 .centrado{
@@ -16,4 +17,52 @@
 }
 #game{
     z-index: 2;
+    border:solid;
+    margin-bottom: 100px;
+}
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#bg-central-base{
+    background: url('../images/bg/bg-central-base.png');
+    background-position-x: -255px;
+    background-size: 1000px 1167px;
+    background-repeat:repeat-x; 
+    animation-name: mover-bg; 
+    animation-duration: 100s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+}
+#bg-central{
+    background: url('../images/bg/bg-central.png');
+    background-position-x: -145px;
+    background-size: 800px 6080px;
+    animation-name: mover-bg; 
+    animation-duration: 230s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-repeat:repeat-x; 
+    animation-direction: reverse;    
+}
+@keyframes mover-bg{
+    from{
+        background-position-y: -5%;
+    }
+    to{
+        background-position-y: 95%;
+    }
+}
+/*
+personaje
+*/
+#pg{
+    position: absolute;
+    bottom: 0px;
+}
+.enemy{
+    position: absolute;
+    top:-500px;
 }

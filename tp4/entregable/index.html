@@ -30,23 +30,65 @@
             <div id="content_wrapper">
         
                 <div id="game_wrapper">
-            
-                    <div id="canvas_wrapper">
                 
-                        <div id="bg-game" class="tam-juego centrado" >
-                            <div class="bg">
-                                <img id="bg-central-base"src="images/bg/bg-central-base.png" alt="">
-                            </div>
-                            <div class="bg">
-                                    <img id="bg-central"src="images/bg/bg-central.png" alt="">
-                                </div>
+                    <div id="bg-game" class="tam-juego centrado" >
+                        <div class="bg"id="bg-central-base">
+                                <!--  <img id="bg-central-base" src="images/bg/bg-central-base.png" alt="" style="
+                                width: 1000px;
+                                margin-left: -225px;
+                            "> -->
                         </div>
-                        <div id="fx1-game" class="tam-juego centrado">2</div>
-                        <div id="game" class="tam-juego centrado">3</div>
-                    
+                        <div class="bg" id="bg-central">
+                                <!-- <img id="bg-central" src="images/bg/bg-central.png" alt="" style="
+margin-left: -136px;
+width: 800px;
+"> -->
+                            </div>
+                    </div>
+                    <div id="game" class="tam-juego centrado">
+                        <img id="pg" src="img/player1_01.png" />
+                    </div>
+                    <div id="images" style="display: none;">
+                        <img id="ex" class="enemy"src="img/098.png" />	<!-- enemy bullets -->
+                        <img id="s" class="enemy"src="img/199.png" />
+                        <img id="p" class="enemy"src="img/056.png" />
+                        <img id="b6a" class="enemy"src="img/b6a.png" />
+                        <img id="b8a" class="enemy"src="img/b8a.png" />
+                        <img id="b8b" class="enemy"src="img/b8b.png" />
+                        <img id="b8c" class="enemy"src="img/b8c.png" />
+                        <img id="b8d" class="enemy"src="img/b8d.png" />
+                        <img id="b8e" class="enemy"src="img/b8e.png" />
+                        <img id="b8f" class="enemy"src="img/b8f.png" />
+                        <img id="b8g" class="enemy"src="img/b8g.png" />
+                        <img id="b8h" class="enemy"src="img/b8h.png" />
+                        <img id="b8i" class="enemy"src="img/b8i.png" />
+                        <img id="b8j" class="enemy"src="img/b8j.png" />
+                        <img id="b16a" class="enemy"src="img/b16a.png" />
+                        <img id="b16b" class="enemy"src="img/b16b.png" />
+                        <img id="b16c" class="enemy"src="img/b16c.png" />
+                        <img id="b16d" class="enemy"src="img/b16d.png" />
+                        <img id="b16e" class="enemy"src="img/b16e.png" />
+                        <img id="b16f" class="enemy"src="img/b16f.png" />
+                        <img id="b16g" class="enemy"src="img/b16g.png" />
+                        <img id="b16h" class="enemy"src="img/b16h.png" />
+                        <img id="b16i" class="enemy"src="img/b16i.png" />
+                        <img id="b16j" class="enemy"src="img/b16j.png" />
+                        <img id="bp" src="img/bp.png"class="enemy" />	<!-- player bullet -->
+                        <img id="bpA" src="img/bpA.png" />	
+                        <img id="bb1" src="img/bb1.png" />	
+                        <img id="bb2" src="img/bb2.png" />	
+                        <!-- <img id="pg" src="img/154.png" /> -->	<!-- player sprite -->
+                        <img id="pg_slw" src="img/154_slow.png" />	
+                        <img id="e1" class="enemy" src="img/153.png" />	<!-- enemy sprites -->
+                        <img id="e2" src="img/153.png" />
+                        <img id="e3" src="img/099.png" />
+                        <img id="e4" src="img/099.png" />
+                        <img id="e5" src="img/100.png" />
+                        <img id="e6" src="img/100.png" />
+                        <img id="e7" src="img/100.png" />
                     </div>
                 </div>
-            </div><!-- canvas_wrapper -->
+            </div>
                 
         </div>
         
@@ -57,5 +99,21 @@
     <script src="js/tablero.js"></script>
     <script src="js/juego.js"></script>
     <script src="js/main.js"></script> -->
+    <script src="js/herencia.js"></script>
+    <script src="js/colisiones.js"></script>
+    
+    <script src="js/movimiento.js"></script>
+    <script src="js/sprite.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/level.js"></script>
+    <script type="text/javascript" src="levels/level1.js"></script>
+    <script src="js/patrondisparo.js"></script>
+    <script src="js/enemyBullet.js"></script>
+    <script src="js/playerbullet.js"></script>
+    
+    <script src="js/enemy.js"></script>
+    <script src="js/jugador.js"></script>
+    <script src="js/main.js"></script>
+        
 </body>
 </html>
