@@ -181,8 +181,8 @@ function patronDisparo001(e){
 	        var b1 = new EnemyBullet();
 			b1.image = img_b8g;
 			b1.element = b1.image.cloneNode();
-			b1.element.id="bala-e-"+Date.now();
-			game.appendChild(b1.element);
+
+			gameFx.appendChild(b1.element);
 	        b1.delay = 100;
 	        b1.addMovimiento(new Movimiento(2, 0, 0, (coords[i].x*2), bg.h));
 	        s.addBullet(b1);
@@ -199,8 +199,8 @@ function patronDisparo002(e){
 		var b1 = new EnemyBullet();
 		b1.image = img_b8g;
 		b1.element = b1.image.cloneNode();
-		b1.element.id="bala-e-"+Date.now();
-		game.appendChild(b1.element);
+
+		gameFx.appendChild(b1.element);
 		b1.delay = 10+(i*5);
 		b1.homing = 1;
 		b1.addMovimiento(new Movimiento(2, 0, 0, -10, bg.w/2));
@@ -211,8 +211,7 @@ function patronDisparo002(e){
 		b2.width = 16; b2.height = 16;
 		b2.image = img_b16d;
 		b2.element = b2.image.cloneNode();
-		b2.element.id="bala-e-"+Date.now();
-		game.appendChild(b2.element);
+		gameFx.appendChild(b2.element);
 		b2.delay = 20;
 		b2.homing = 0;
 		b2.addMovimiento(new Movimiento(3, 0, 0, bg.w, bg.h));
@@ -237,8 +236,7 @@ function patronDisparo003(e){
 		}
 		
 		b1.element = b1.image.cloneNode();
-		b1.element.id="bala-e-"+Date.now();
-		game.appendChild(b1.element);
+		gameFx.appendChild(b1.element);
 		b1.delay = 100+(i*8);
 		b1.addMovimiento(new Movimiento(2, 0, 0, -80, bg.h));
 		
@@ -253,8 +251,7 @@ function patronDisparo003(e){
 			b2.image = img_b8h;
 		}
 		b2.element = b2.image.cloneNode();
-		b2.element.id="bala-e-"+Date.now();
-		game.appendChild(b2.element);
+		gameFx.appendChild(b2.element);
 		b2.delay = 100+(i*8);
 		b2.addMovimiento(new Movimiento(2, 0, 0, 0, bg.h));
 		
@@ -271,8 +268,7 @@ function patronDisparo003(e){
 		}
 		
 		b3.element = b3.image.cloneNode();
-		b3.element.id="bala-e-"+Date.now();
-		game.appendChild(b3.element);
+		gameFx.appendChild(b3.element);
 		b3.delay = 100+(i*8);
 		b3.addMovimiento(new Movimiento(2, 0, 0, 80, bg.h));
 		

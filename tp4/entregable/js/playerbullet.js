@@ -6,9 +6,9 @@ function PlayerBullet(){
 	
 	this.image = img_bp;
 	this.color = 'rgba(0,0,0,255)';
-    	this.element = img_bp.cloneNode();
-   	this.element.id="bala-"+Date.now();
-   	 game.appendChild(this.element);
+    this.element = img_bp.cloneNode();
+   	
+   	 gameFx.appendChild(this.element);
     
 	this.fin = 0;
 	

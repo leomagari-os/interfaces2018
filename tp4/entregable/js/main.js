@@ -25,6 +25,7 @@ var bg = new Background(550, 600);	 // background global
 var jg = new Jugador();	 // jugador global
 var level = new Level();	 // nivel global 
 var game= document.getElementById("game");
+var gameFx= document.getElementById("gameFx");
 
 //imagenes
 var img_pg = document.getElementById('pg');
@@ -209,4 +210,3 @@ function start(){
  function rand(ini, fin){
 	return rn = Math.floor(Math.random()*(fin-ini+1))+ini;
 }
-start();

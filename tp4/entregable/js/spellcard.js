@@ -28,7 +28,7 @@ PatronDisparo.prototype.fire = function()
             bc.image = b.image;
             bc.element = b.image.cloneNode();
 			bc.element.id="bala-e-"+Date.now();
-			game.appendChild(bc.element);
+			gameFx.appendChild(bc.element);
             bc.homing = b.homing;
       
 			var mc = new Movimiento(b.movimiento.velocidad, b.movimiento.xInicial, b.movimiento.yInicial, b.movimiento.xFinal, b.movimiento.yFinal);

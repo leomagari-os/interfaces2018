@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
@@ -37,7 +38,11 @@
             
                 <div class="cont-juego">
                     <div id="content_wrapper">
-                
+                        <div id="game-over">
+                            <div id="game-over-msg">Fin del Juego</div>
+                            <div id="puntaje-cont">Puntaje: <span id="puntaje">13300</span></div>
+                            <button id="btn-game-over">Jugar otra vez!</button>
+                        </div>
                         <div id="game_wrapper">
                         
                             <div id="bg-game" class="tam-juego centrado" >
@@ -47,6 +52,7 @@
                             <div id="game" class="tam-juego centrado">
                                 <div id="pg"></div>
                             </div>
+                            <div id="gameFx" class="tam-juego centrado"></div>
                             <div id="images" style="display: none;">
                                 <img id="ex" class="enemy"src="img/098.png" />	<!-- enemy bullets -->
                                 <img id="s" class="enemy"src="img/199.png" />
@@ -92,150 +98,236 @@
                 </div>
       
         
-        <div class="cards-container">
-            
-            <div class="cont-cards-left">
-                <div class="card">
-                    <div class="card-title">
-                        Requisitos Del Sistema
-                    </div>
-                    <div class="card-content">
-                        <div class="content-minimo">
-                               <div class="card-content-title">MÍNIMO</div>
-                               <div class="content-text">
-                                    <ul>
-                                            <li>
-                                                    <div class="item">SO: </div> 
-                                                    <div class="item-text">
-                                                            Windows 7, Windows 8.1, Windows 10 (64-bit versions only)                                                    </div>
-        
-                                            </li>
-                                            <li>
-                                                    <div class="item">Procesador: </div> 
-                                                    <div class="item-text">
-                                                            Intel Core i3-550 | AMD Phenom II X4 955 or equivalent
-                                                    </div>
-                                            </li>
-                                            <li>
-                                                    <div class="item">Memoria: </div> 
-                                                    <div class="item-text">
-                                                            4 GB de RAM
-                                                    </div>
-                                            </li>
-                                            <li>
-                                                    <div class="item">Gráficos: </div> 
-                                                    <div class="item-text">
-                                                            NVIDIA GeForce GTX660/GTX750ti/GTX950/GTX1050 with 2 GB VRAM or more | AMD Radeon HD6970/HD7870/R9 270/R9 370/RX460 with 2 GB VRAM or more
-                                                    </div>
-                                            </li>
-                                            <li>
-                                                    <div class="item">Red: </div>
-                                                    <div class="item-text">
-                                                        Conexión de banda ancha a Internet
-                                                    </div>
-                                            </li>
-                                            <li>
-                                                    <div class="item">Almacenamiento: </div> 
-                                                    <div class="item-text">
-                                                        40 GB de espacio disponible
-                                                    </div>
-                                            </li>
-                                            <li>
-                                                   <div class="item">Tarjeta de sonido: </div>
-                                                   <div class="item-text">
-                                                        DirectX-Compatible using the latest drivers
-                                                   </div>
-                                            </li>
-                                            
-                                        </ul>
-                               
-                               </div>
+                <div class="container">
+                    <div class="container-reglas">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <img src="img/FullEnd_s_01.png" class="img-thumbnail img-game">
+                            <span class="game_title">Ship shooter!</span>
+                            <br>
+                            <span class="game_category">Juegos de Habilidad / Shoot 'em up</span>
+                            <br>
+                            <span class="game_data">6 de noviembre de 2018 | 2025 Partidas</span>
+                          </div>
                         </div>
-                        <div class="content-recomendado">
-                                <div class="card-content-title" style="
-                                top: 70px;
-                            ">RECOMENDADO</div>
-                                <ul>
-                                    <li>
-                                            <div class="item">SO: </div> 
-                                            <div class="item-text">
-                                                Windows 7, Windows 8.1, Windows 10 (64-bit versions only)
-                                            </div>
+                  
+                        <div class="row">
+                          <div class="col-md-12 desc">
+                            <h2 class="header-title">Detalles</h2>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p class="description">
+                              Sobrevive al ataque de los invasores!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12 desc">
+                            <h2 class="header-title">controles</h2>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <ul class="game-controls center">
+                              <li>
+                                <span class="type kb-generic-key">
+                                  <span class="key">Z</span>
+                                </span>
+                                <span class="action">Dispara</span>
+                              </li>
+                  
+                              <li>
+                                <span class="type kb-generic-key">
+                                  <span class="key">
+                                        <i class="fas fa-long-arrow-alt-left"></i>
+                                  </span>
+                                </span>
+                                <span class="action">Izquierda</span>
+                              </li>
+                              <li>
+                                    <span class="type kb-generic-key">
+                                      <span class="key">
+                                            <i class="fas fa-long-arrow-alt-right"></i>
+                                      </span>
+                                    </span>
+                                    <span class="action">Derecha</span>
+                                  </li>
+                                  <li>
+                                        <span class="type kb-generic-key">
+                                          <span class="key">
+                                                <i class="fas fa-long-arrow-alt-up"></i>
+                                          </span>
+                                        </span>
+                                        <span class="action">Arriba</span>
+                                      </li>
+                                      <li>
+                                            <span class="type kb-generic-key">
+                                              <span class="key">
+                                                    <i class="fas fa-long-arrow-alt-down"></i>
+                                              </span>
+                                            </span>
+                                            <span class="action">Abajo</span>
+                                          </li>
+                                           <li>
+                                            <span class="type kb-generic-key">
+                                              <span class="key">
+                                                   Shift
+                                              </span>
+                                            </span>
+                                            <span class="action" style="
+                                            margin-left: 50px;
+                                        ">Reducir Velocidad</span>
+                                          </li>
 
-                                    </li>
-                                    <li>
-                                            <div class="item">Procesador: </div> 
-                                            <div class="item-text">
-                                                Intel Core i5-2500K | AMD FX-6350 or equivalent
-                                            </div>
-                                    </li>
-                                    <li>
-                                            <div class="item">Memoria: </div> 
-                                            <div class="item-text">
-                                                8 GB de RAM
-                                            </div>
-                                    </li>
-                                    <li>
-                                            <div class="item">Gráficos: </div> 
-                                            <div class="item-text">
-                                                NVIDIA GeForce GTX770/GTX970/GTX1060 with 3 GB VRAM or more | AMD Radeon R9 280X/R9 380/RX470 with 3 GB VRAM or more                                    
-                                            </div>
-                                    </li>
-                                    <li>
-                                            <div class="item">Red: </div>
-                                            <div class="item-text">
-                                                Conexión de banda ancha a Internet
-                                            </div>
-                                    </li>
-                                    <li>
-                                            <div class="item">Almacenamiento: </div> 
-                                            <div class="item-text">
-                                                40 GB de espacio disponible
-                                            </div>
-                                    </li>
-                                    <li>
-                                           <div class="item">Tarjeta de sonido: </div>
-                                           <div class="item-text">
-                                                DirectX-Compatible using the latest drivers
-                                           </div>
-                                    </li>
-                                    
-                                </ul>
-                               
-                               
+                            </ul>
+                          </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="cont-cards-right">
-                <div class="card-mini">
-                    <div class="card-mini-title">
-                        Comprar Juego
-                    </div>
-                    <div class="comprar">
-                        <div class="comprar-text">ARS$ 22,00</div>
-                        <a href="#"class="btn-comprar">Comprar</a>
-                    </div>
-                </div>
-                <div class="card-mini ranking">
-                        <div class="card-mini-title">
-                            Ranking
-                        </div>
-                        <div class="cont-ranking">
-                            <ol class="ranking">
-                                    <li>Rvz420</li>
-                                    <li>Arion</li>
-                                    <li>MaxiHadoken</li>
-                                    <li>Nozzlen</li>
-                                    <li>BestBardoLAS</li>
-                                
-                            </ol>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-    <footer></footer>
+                        
+                     
+                      <footer class="main-footer">
+                        <nav class="footer-nav">
+                          <ul>
+                            <li class="center">
+                              <a title="Página principal de Minijuegos" href="#">
+                                <img src="img/logo-pagina.png" style="width:200px;">
+                              </a>
+                            </li>
+                          </ul>
+                          <ul>
+                            <li>
+                              <h4>Explorar</h4>
+                            </li>
+                            <li>
+                              <a href="#" title="Galería de trofeos">
+                                Trofeos </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Juegos con logros">
+                                Logros </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Comunidad">
+                                Comunidad </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Centro de Avatares">
+                                Centro de Avatares </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Multijugador">
+                                Multijugador </a>
+                            </li>
+                            <li>
+                              <a href="#" target="_blank" title="Minitorneos">
+                                Raviztorneos </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Eventos">
+                                Eventos y novedades </a>
+                            </li>
+                  
+                          </ul>
+                  
+                          <ul>
+                            <li>
+                              <h4>Recursos</h4>
+                            </li>
+                            <li>
+                              <a href="#" title="Developers Site">
+                                Desarrolladores </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Afiliados">
+                                Afiliados </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Media kit">
+                                Media kit </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Mobile Site">
+                                Versión móvil </a>
+                            </li>
+                          </ul>
+                  
+                          <ul>
+                            <li>
+                              <h4>Soporte</h4>
+                            </li>
+                            <li>
+                              <a target="_blank" href="#" title="Ayuda">
+                                Ayuda </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Ayuda">
+                                Sobre la experiencia </a>
+                            </li>
+                          </ul>
+                  
+                          <ul>
+                            <li>
+                              <h4>Social</h4>
+                            </li>
+                            <li>
+                              <a href="#" title="Facebook" target="_blank">Facebook</a>
+                            </li>
+                            <li>
+                              <a href="#" title="Twitter" target="_blank">Twitter</a>
+                            </li>
+                            <li>
+                              <a href="#" target="_blank" title="Google+" rel="publisher">Google+</a>
+                            </li>
+                          </ul>
+                  
+                          <ul>
+                            <li>
+                              <h4>Internacional</h4>
+                            </li>
+                  
+                            <li>
+                              <a hreflang="es" href="#">Ravizjuegos</a>
+                            </li>
+                            <li>
+                              <a hreflang="en" href="#">Ravizplay</a>
+                            </li>
+                            <li>
+                              <a hreflang="it" href="#">Ravizgiochi</a>
+                            </li>
+                            <li>
+                              <a hreflang="pt" href="#">Ravizjogos</a>
+                            </li>
+                          </ul>
+                  
+                          <ul>
+                            <li>
+                              <h4>Corporate</h4>
+                            </li>
+                            <li>
+                              <a href="#" title="Términos de Uso">
+                                Términos de Uso </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Privacidad">
+                                Privacidad </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Cookies">
+                                Cookies </a>
+                            </li>
+                            <li>
+                              <a href="#" title="Empleo">
+                                Empleo </a>
+                            </li>
+                            <li>
+                              <a href="#" title="About">
+                                About </a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </footer>
     <script src="js/herencia.js"></script>
     <script src="js/colisiones.js"></script>
     
