@@ -184,7 +184,7 @@ function manageKeyDown(e){
 //si se clickea reinicia el juego
 function start(){
 	clearInterval(interval);
-	
+	let score_ant=score;
 	now = 0;
 	score = 0;
 	
@@ -211,6 +211,7 @@ function start(){
 		level = generateLevel1();		
 	}else if (enemigos.length == 0 && bullets.length == 0 && currentLevel == 2){
 		clearInterval(interval);
+		puntaje.innerHTML = score_ant*7;
 		document.getElementById("game-over").style.display="initial";
 		document.getElementById("bg-central").style.animationPlayState="paused";
 
