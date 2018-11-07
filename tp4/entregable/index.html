@@ -44,10 +44,18 @@
                             <button id="btn-game-over">Jugar otra vez!</button>
                         </div>
                         <div id="estadisticas">
-                            <span>
+                            <span style="position: initial;
+                            display: block;">
                                 Puntaje:<span id="puntaje-game"></span>
-                            <span>
+                            </span>
+                            <span style="position: initial;
+                            display: block;">
                                 Vida: <span id="vida"></span>
+                            </span>
+                            <span class="statistic" style="position: initial;
+                            display: block;" >Sonido
+                                    <input id="MusicVolume" type="range" min="0" max="1" step="0.01" value="0.5" onchange="ChangeMusicVolume(this.value);"  />
+			        
                             </span>
         
                         </div>

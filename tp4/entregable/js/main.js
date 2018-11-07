@@ -122,6 +122,7 @@ function work(){
 		document.getElementById("game-over").style.display="initial";
 		document.getElementById("bg-central").style.animationPlayState="paused";
 		document.getElementById("bg-central-base").style.animationPlayState="paused";
+		bgm.pause();
 	}
 	        
 	// pasa de nivel
@@ -214,6 +215,7 @@ function start(){
 		puntaje.innerHTML = score_ant*7;
 		document.getElementById("game-over").style.display="initial";
 		document.getElementById("bg-central").style.animationPlayState="paused";
+		bgm.pause();
 
 	}
 	//inicia el juego
@@ -225,6 +227,7 @@ btnPlay.onclick=(ev)=>{
 	btnPlay.style.display="none";
 	document.getElementById("cont-juego").style.display="block";
 	start();
+	startMusic();
 }
 otroPlay.onclick=(ev)=>{
 	location.reload(true);
@@ -233,4 +236,18 @@ otroPlay.onclick=(ev)=>{
 //numero random
  function rand(ini, fin){
 	return rn = Math.floor(Math.random()*(fin-ini+1))+ini;
+}
+
+var bgm =new Audio("audio/bgm_st.mp3");
+function startMusic(){
+	
+	
+	var vol = document.getElementById("MusicVolume").value;
+	bgm.volume = vol;
+
+	bgm.play();
+}
+function ChangeMusicVolume(vol) {
+	var vol = document.getElementById("MusicVolume").value;
+	bgm.volume = vol;
 }

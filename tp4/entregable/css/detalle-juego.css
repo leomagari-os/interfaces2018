@@ -15,6 +15,10 @@ body{
     margin-left: calc(10%);
     box-shadow: 0px 0px 30px#1D334A;
 }*/
+span .statistic{
+    position: initial;
+    display: block;
+}
 .flecha{
     color: gray;
     font-size: 50px;
