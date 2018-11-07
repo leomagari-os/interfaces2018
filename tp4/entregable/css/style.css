@@ -4,10 +4,11 @@ body{
   background-color: #ebebeb;
 }
 
-.cont-juego{
+#cont-juego{
   height: 555px;
   width: 100%;
   background: #3e444a;
+  display: none;
 }
 
 #juegoContainerMax{
@@ -139,12 +140,13 @@ body{
 .game-controls {
   margin-bottom: 20px;
   margin-top: 20px;
+  user-select: none;
 }
 
 .game-controls .type {
   display: inline-block;
   vertical-align: middle;
-  background: url(../images/controls.svg) no-repeat 0 0;
+ 
   background-size: 201px;
   height: 52px;
 }
@@ -159,6 +161,7 @@ body{
   text-shadow: 0 1px 0 #fff;
   text-transform: uppercase;
   width: 49px;
+  user-select: none;
 }
 
 .game-controls > li {
@@ -176,6 +179,7 @@ body{
   line-height: 50px;
   margin-left: 4px;
   vertical-align: middle;
+  user-select: none;
 }
 
 .figure-caption {

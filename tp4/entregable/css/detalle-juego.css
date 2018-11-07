@@ -85,12 +85,19 @@ img.img-carousel{
     padding: 10px 0;
     z-index: 99;
     border:solid 2px #585757;
-    opacity: 0;
+    display: none;
+}
+#estadisticas{
+    position: absolute;
+    right: 15px;
+    color: white;
+    font-size: 20px;
 }
 #puntaje-cont{
     padding: 10px;
 }
-#btn-game-over{
+
+#btn-game-over,#btn-play{
     background-color: #30bb3a;
     border: 0;
     display: inline-block;

@@ -26,6 +26,11 @@ var jg = new Jugador();	 // jugador global
 var level = new Level();	 // nivel global 
 var game= document.getElementById("game");
 var gameFx= document.getElementById("gameFx");
+var btnPlay= document.getElementById("btn-play");
+//para imprimir en pantalla
+var puntajeGame =document.getElementById("puntaje-game");
+var puntaje= document.getElementById("puntaje");
+var vida= document.getElementById("vida");
 
 //imagenes
 var img_pg = document.getElementById('pg');
@@ -66,7 +71,7 @@ var img_b16h = document.getElementById('b16h');
 var img_b16i = document.getElementById('b16i');
 var img_b16j = document.getElementById('b16j');
 	// player sprite
-var img_pg_slw = document.getElementById('pg_slw');	// Muestra el hitbox
+var img_pg_slw = document.getElementById('pg_slw');	
 
 
 
@@ -105,10 +110,17 @@ function work(){
 	for (var i = 0; i < spawned.length; i++)
 	    enemigos[enemigos.length] = spawned[i];
 	
+	//imprimo puntaje y vida
+	puntaje.innerHTML = score*7;
+	puntajeGame.innerHTML = score*7;
+	vida.innerHTML = jg.vida;
 	if (jg.vida < 1){
 		console.log("GAME OVER");
 		img_pg.classList.toggle("explosion");
 		clearInterval(interval);
+		document.getElementById("game-over").style.display="initial";
+		document.getElementById("bg-central").style.animationPlayState="paused";
+		document.getElementById("bg-central-base").style.animationPlayState="paused";
 	}
 	        
 	// pasa de nivel
@@ -198,14 +210,21 @@ function start(){
 		level = generateLevel1();		
 	}else if (enemigos.length == 0 && bullets.length == 0 && currentLevel == 2){
 		clearInterval(interval);
-		alert("termino el juego");
-		//TODO: avisar fin de juego
+		document.getElementById("game-over").style.display="initial";
+		document.getElementById("bg-central").style.animationPlayState="paused";
 
 	}
 	//inicia el juego
 	interval = setInterval(work, 20);
 	
 }
+btnPlay.onclick=(ev)=>{
+	ev.preventDefault();
+	btnPlay.style.display="none";
+	document.getElementById("cont-juego").style.display="block";
+	start();
+}
+
 //numero random
  function rand(ini, fin){
 	return rn = Math.floor(Math.random()*(fin-ini+1))+ini;
