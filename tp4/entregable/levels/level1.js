@@ -26,6 +26,51 @@ function generateLevel1(){
 		patronDisparo002(e);
 		level.addEnemigo(e);
 	}
+	for (var i = 1900; i <= 2200; i+=100){
+		e = crearEnemigo2(i);
+		move004(e);
+		patronDisparo003(e);
+		level.addEnemigo(e);
+	}
+	
+	for (var i = 2400; i <= 2700; i+=100){
+		e = crearEnemigo2(i);
+		move004(e);
+		patronDisparo001(e);
+		level.addEnemigo(e);
+	}
+	
+	for (var i = 2800; i <= 3000; i+=150)
+	{
+		e = crearEnemigo3(i);
+		move001(e);
+		patronDisparo001(e);
+		level.addEnemigo(e);
+	}
+	
+	for (var i = 3400; i <= 3800; i+=75)
+	{
+		e = crearEnemigo2(i);
+		move006(e);
+		patronDisparo003(e);
+		level.addEnemigo(e);
+	}
+	
+	for (var i = 4000; i <= 4300; i+=100)
+	{
+		e = crearEnemigo4(i);
+		move005(e);
+		patronDisparo001(e);
+		level.addEnemigo(e);
+	}
+	
+	for (var i = 4600; i <= 4900; i+=100)
+	{
+		e = crearEnemigo2(i);
+		move005(e);
+		patronDisparo002(e);
+		level.addEnemigo(e);
+	}
 	
 	return level;
 }
@@ -51,27 +96,36 @@ function crearEnemigo1(d){
 function crearEnemigo2(d){
 	var e = new Enemigo();
 	e.level = 2;
-	e.life = 20;
+	e.life = 6;
 	e.image = img_e2;
 	e.delay = d;
+	e.element= img_e2.cloneNode();
+	e.element.id="enemigo-"+e.id;
+	game.appendChild(e.element);
 	return e;
 }
 
 function crearEnemigo3(d){
 	var e = new Enemigo();
 	e.level = 3;
-	e.life = 40;
+	e.life = 6;
 	e.image = img_e3;
 	e.delay = d;
+	e.element= img_e3.cloneNode();
+	e.element.id="enemigo-"+e.id;
+	game.appendChild(e.element);
 	return e;
 }
 
 function crearEnemigo4(d){
 	var e = new Enemigo();
 	e.level = 4;
-	e.life = 80;
+	e.life = 6;
 	e.image = img_e4;
 	e.delay = d;
+	e.element= img_e4.cloneNode();
+	e.element.id="enemigo-"+e.id;
+	game.appendChild(e.element);
 	return e;
 }
 

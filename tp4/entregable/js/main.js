@@ -27,6 +27,7 @@ var level = new Level();	 // nivel global
 var game= document.getElementById("game");
 var gameFx= document.getElementById("gameFx");
 var btnPlay= document.getElementById("btn-play");
+var otroPlay=document.getElementById("btn-game-over");
 //para imprimir en pantalla
 var puntajeGame =document.getElementById("puntaje-game");
 var puntaje= document.getElementById("puntaje");
@@ -223,6 +224,9 @@ btnPlay.onclick=(ev)=>{
 	btnPlay.style.display="none";
 	document.getElementById("cont-juego").style.display="block";
 	start();
+}
+otroPlay.onclick=(ev)=>{
+	location.reload(true);
 }
 
 //numero random
